@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -19,6 +20,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -65,6 +67,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView pressure = findViewById(R.id.pressure);
         TextView humidity = findViewById(R.id.humidity);
         TextView temperature = findViewById(R.id.temperature);
+
+        //кнопка информации
+        ImageButton info = findViewById(R.id.info);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,InfoActivity.class));
+            }
+        });
 
         //создание карты
         mapFragment = (MapFragment) getFragmentManager()
